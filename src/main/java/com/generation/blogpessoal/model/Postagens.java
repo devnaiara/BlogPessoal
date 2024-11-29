@@ -17,6 +17,7 @@ import jakarta.validation.constraints.Size;
 @Table(name= "tb_postagens") //Vai chegar no banco de dados e pedir para criar as tabelas, create table.
 public class Postagens {
 	
+	//model model modela como deve ser o banco de dados e regras de insercao de dados. 
 	//Classe modelo, depois cria um objeto dessa classe. 
 	//Classe que cria o modelo de banco de dados.
 	
