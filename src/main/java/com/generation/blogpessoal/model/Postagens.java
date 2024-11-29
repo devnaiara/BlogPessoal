@@ -4,10 +4,13 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity; //Esse jakarta é sobre as bibliotecas que lidam com o banco de dados.
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size; 
@@ -42,6 +45,10 @@ public class Postagens {
 	@UpdateTimestamp //O front não vai preencher, vai ser preenchido automaticamente.
 	private LocalDateTime data; //Importa-se.
 	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem") //Ignora a repetição
+	private Tema tema;
+	
 	public Long getId() {
 		return id;
 	}
@@ -66,8 +73,20 @@ public class Postagens {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
+	public Tema getTema() {
+		return tema;
+	}
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+	
+	
 	
 	//Fazer anotações, conseguir criar regras das dependências.
 	//"Essa anotação vai seguir essas anotações.
+	//Classe modelo envia o modelo do banco de dados.
+	//Anotação metadados Entity nome do banco de dados
+	//Usar Get  Set para conseguir enviar informações.
+	//Insonia pega o json e envila como objeto colocando nas variaveis.
 	
 }
