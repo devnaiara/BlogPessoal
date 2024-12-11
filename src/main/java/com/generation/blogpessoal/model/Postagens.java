@@ -48,6 +48,10 @@ public class Postagens {
 	@ManyToOne
 	@JsonIgnoreProperties("postagem") //Ignora a repetição
 	private Tema tema;
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 	
 	public Long getId() {
 		return id;
@@ -79,8 +83,15 @@ public class Postagens {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-	
-	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	
 	//Fazer anotações, conseguir criar regras das dependências.
 	//"Essa anotação vai seguir essas anotações.
